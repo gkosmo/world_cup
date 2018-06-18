@@ -3,8 +3,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
   def home
     matches_url = 'http://worldcup.sfg.io/matches/today'
-    matches_json = open(matches_url).read
-    @matches = JSON.parse(matches_json)
+    self_destructive_namein_k = open(matches_url).read
+
+    @matches = JSON.parse(self_destructive_namein_k)
   end
 
   def dashboard
