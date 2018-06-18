@@ -5,4 +5,11 @@
    <%= current_user.email %> 
    <%= current_user.encrypted_password %> 
    <%= current_user.last_sign_in_at %>
+   <% @matches.each do |match| %> 
+     <% match.each do |k, v| %>
+     <p> 
+    <strong> <%= k %>: </strong> <em> <%= v %> </em>
+    </p>
+     <% end %>
+   <% end %>
  <% end %> 
