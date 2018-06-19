@@ -9,12 +9,18 @@
               <% end %>
 
     <% else %>
+     <h2> <strong> Log In to See Shit</strong></h2>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
  </div>
- <div class="text-center">
+
+ <div id="current-match">
+
+
+ </div>
+<div class="text-center">
 <h1>  Vote for your team </h1>
 </div>
 <div class="layout-page">
@@ -29,3 +35,6 @@
 
 
 
+<script>
+
+</script>
