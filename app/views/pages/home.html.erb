@@ -1,23 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+ <div class="text-right">
+
+       <% if user_signed_in? %>
+
+      <!-- Links when logged in -->
+
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %>
+
+    <% else %>
+      <!-- Login link (when logged out) -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+ </div>
+ <div class="text-center">
+<h1>  Vote for your team </h1>
+</div>
+<div class="layout-page">
  <% if user_signed_in? %>
-  
-   <p>  Hello User </p>  
-   <%= current_user.email %> 
-   <%= current_user.encrypted_password %> 
-   <%= current_user.last_sign_in_at %>
-   <div class="container" > 
-    <div class="row" > 
-  
-   <% @matches.each do |match| %> 
-   <div class="col-xs-3">
+   <% @matches.each do |match| %>
+   <div >
      <%= render 'shared/card', match: match %>
-    
-
     </div>
-  
    <% end %>
-     </div>
-  </div>
+ <% end %>
+</div>
 
- <% end %> 
+
+

@@ -1,22 +1,30 @@
     <div class="card">
       <div class="card-title">
-        <h2> home team: <%= match["home_team"] %> 
+        <h2> home team: <%= match["home_team"] %>
         </h2>
-         <p> 
-          <h2>  away team: <%= match["away_team"] %>  </h2> 
-         </p> 
+         <p>
+          <h2>  away team: <%= match["away_team"] %>  </h2>
+         </p>
       </div>
-      <div class="card-text">
+      <div class="card-text text-center">
         <p> <strong> venue: </strong> <em> <%= match["venue"] %> </em> </p>
-        <p> <%= match["datetime"] %> s</p>
+        <p> <%=  local_time(match["datetime"]) %> s</p>
       </div>
+      <div class="winner text-center">
       <% if match["winner"].blank? %>
-        No Winner Yet !  
-      <% else %> 
+        No Winner Yet !
+      <% else %>
         <%= match["winner"] %>
       <% end %>
+      </div>
       <div class="card-actions border-top">
-        <a class="card-actions__link" href="#">link</a>
-        <a class="card-actions__link" href="#">link</a>
+        <% if match.vote_users(current_user) %>
+        <%= link_to "Vote for #{match.home_team}", vote_match_path(team: match.home_team, match: match.id), class: "btn btn-primary" %>
+        <%= link_to "Vote for #{match.away_team}", vote_match_path(team: match.away_team, match: match.id), class: "btn btn-primary" %>
+        <% else %>
+          <%= match.votes_home_team.count %>  Home Team Votes
+          <%= match.votes_away_team.count %>  Away Team Votes
+        <% end %>
+
       </div>
     </div>
