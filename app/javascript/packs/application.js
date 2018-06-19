@@ -10,10 +10,13 @@ function startMe(){
    doc_c.innerHTML = '';
   let mainDoc = document.createElement("div");
   let p = myJson[0];
+ let line = document.createElement('strong');
+   line.innerText = "Home Team: " + p["home_team"]["goals"] + " - Away Team: " + p["away_team"]["goals"];
+ mainDoc.appendChild(line)
 
   p = myJson[0]['home_team_events'][0];
 
-  let line = document.createElement('div');
+   line = document.createElement('div');
    line.innerText = "Home Team Events: ";
  mainDoc.appendChild(line)
 for (var key in p) {
