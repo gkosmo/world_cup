@@ -1,15 +1,23 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
  <% if user_signed_in? %>
+  
    <p>  Hello User </p>  
    <%= current_user.email %> 
    <%= current_user.encrypted_password %> 
    <%= current_user.last_sign_in_at %>
+   <div class="container" > 
+    <div class="row" > 
+  
    <% @matches.each do |match| %> 
-     <% match.each do |k, v| %>
-     <p> 
-    <strong> <%= k %>: </strong> <em> <%= v %> </em>
-    </p>
-     <% end %>
+   <div class="col-xs-3">
+     <%= render 'shared/card', match: match %>
+    
+
+    </div>
+  
    <% end %>
+     </div>
+  </div>
+
  <% end %> 

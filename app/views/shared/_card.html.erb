@@ -1,0 +1,22 @@
+    <div class="card">
+      <div class="card-title">
+        <h2> home team: <%= match["home_team"] %> 
+        </h2>
+         <p> 
+          <h2>  away team: <%= match["away_team"] %>  </h2> 
+         </p> 
+      </div>
+      <div class="card-text">
+        <p> <strong> venue: </strong> <em> <%= match["venue"] %> </em> </p>
+        <p> <%= match["datetime"] %> s</p>
+      </div>
+      <% if match["winner"].blank? %>
+        No Winner Yet !  
+      <% else %> 
+        <%= match["winner"] %>
+      <% end %>
+      <div class="card-actions border-top">
+        <a class="card-actions__link" href="#">link</a>
+        <a class="card-actions__link" href="#">link</a>
+      </div>
+    </div>
