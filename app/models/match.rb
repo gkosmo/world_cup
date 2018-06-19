@@ -11,7 +11,7 @@ class Match < ApplicationRecord
         matches_json = JSON.parse(matches_json)
         matches_json.each do |mat|
             match_db = Match.where(fifa_id: mat['fifa_id'] )[0]
-            match_db.update(datetime: mat["datetime"], home_team: mat["home_team"]["country"], away_team: mat["away_team"]["country"], venue: mat["venue"] )
+            match_db.update(datetime: mat["datetime"], home_team: mat["home_team"]["country"], away_team: mat["away_team"]["country"], venue: mat["venue"], winner: mat['winner'] )
         end
     end
 
