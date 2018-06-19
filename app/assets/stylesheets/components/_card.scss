@@ -36,9 +36,10 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
   width: 100%;
   max-width: $card-max-width;
   min-width: $card-min-width;
-  background-color: $white;
+  background-color: white;
   border-radius: 5px;
-  
+  margin: 30px;
+  padding: 10px;
   @include shadow-2dp();
 }
 
@@ -46,18 +47,21 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
   padding-top: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  color: $primary-color;
+  color: red;
+  display: flex;
+  align-content: center;
+  flex-direction: columns;
 }
 
 .card-text {
   padding-left: 15px;
   padding-right: 15px;
-  color: $dark-light;
+  color: blue;
 }
 
 .card-actions {
   padding: 15px;
-  @include flex-box(row, flex-start, center);
+  @include flex-box(row, space-around, center);
 }
 
 .card-actions__link {
@@ -66,18 +70,18 @@ $shadow-ambient-shadow-opacity: 0.12 !default;
   font-style: normal;
   font-variant: small-caps;
   margin-right: 10px;
-  color: $secondary-color;
+  color: red;
 }
 
 .card-media {
   width: 100%;
   min-height: 200px;
-  background-color: $secondary-color;
+  background-color: red;
   padding: 10px;
-  
+
   @include flex-box(column, flex-end, flex-end);
 }
 
 .border-top {
-  border-top: 1px solid $dark-light;
+  border-top: 1px solid gray;
 }
