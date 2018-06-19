@@ -14,8 +14,8 @@
       <% if match["winner"].blank? %>
         No Winner Yet !
       <% else %>
-        <%= match["winner"] %>
-        <% if match['winner'] == match.vote_users(current_user).team %>
+       <strong> Winner: </strong><em>  <%= match["winner"] %> </em>
+        <% if match.vote_users(current_user) && match['winner'] == match.vote_users(current_user).team %>
           <h4> And You're a winner too !</h4>
           <% else %>
             <h4> And You're a looser too !</h4>
