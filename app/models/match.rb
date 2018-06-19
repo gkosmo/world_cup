@@ -24,7 +24,7 @@ class Match < ApplicationRecord
     end
 
     def vote_users(user)
-       Vote.where(match: self, user: user).empty?
+       Vote.where(match: self, user: user).empty? ? false : Vote.where(match: self, user: user).first
     end
 
 end
