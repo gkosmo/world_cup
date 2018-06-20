@@ -16,7 +16,9 @@
 
  </div>
 
-
+  <form action="/search">
+    <input type="search" id="venue_address">
+  </form>
  <div id="map" style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"  ></div>
