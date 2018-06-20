@@ -1,24 +1,21 @@
 
 function startMe(){
   console.log(Date.now());
-  fetch('//worldcup.sfg.io/matches/current',  {
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, same-origin, *omit
-    crossDomain:true,
-    headers: {
-         'content-type': 'application/json'
-    },
-    method: 'POST'   }).then(function(response) {
-    return response.json();
-  })
+  fetch('//worldcup.sfg.io/matches/current', {
+  method: "GET",
+
+   headers: {
+    "Content-Type": "application/json"
+  } } ).then(response => response.json())
   .then(function(myJson) {
      console.log(myJson);
-   if(myJson.lenght > 0) {
+   if(myJson) {
 
    let doc_c =  document.getElementById('current-match');
    doc_c.innerHTML = '';
    let mainDoc = document.createElement("div");
    let p = myJson[0];
+   console.log(myJson[0])
    let line = document.createElement('strong');
    line.innerText = "Home Team: " + p["home_team"]["goals"] + " - Away Team: " + p["away_team"]["goals"];
    mainDoc.appendChild(line);
@@ -49,6 +46,8 @@ function startMe(){
       mainDoc.appendChild(line);
     }
   }
+  console.log(mainDoc);
+  console.log(doc_c);
   doc_c.appendChild(mainDoc)
   }
 });

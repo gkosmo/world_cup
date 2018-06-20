@@ -8,7 +8,7 @@ class Match < ApplicationRecord
     def self.update_all_matches
 
         matches_url = 'http://worldcup.sfg.io/matches'
-        matches_json = open(matches_url).read
+        matches_json = open(matches_url, 'User-Agent' => 'Ruby').read
         matches_json = JSON.parse(matches_json)
         matches_json.each do |mat|
             match_db = Match.where(fifa_id: mat['fifa_id'] )[0]
