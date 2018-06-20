@@ -1,6 +1,7 @@
 require 'open-uri'
 class Match < ApplicationRecord
-
+  geocoded_by :venue
+  after_validation :geocode, if: :will_save_change_to_venue?
   has_many :votes
 
 
