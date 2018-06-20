@@ -1,6 +1,7 @@
 import GMaps from 'gmaps/gmaps.js';
 import { autocomplete } from '../autocomplete';
 autocomplete();
+function throwMap(){
 const mapElement = document.getElementById('map');
 console.log(mapElement)
 if (mapElement) { // don't try to build a map if there's no div#map to inject in
@@ -133,6 +134,13 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     }
 ];
   map.addMarkers(markers);
+  map.addStyle({
+  styles: styles,
+  mapTypeId: 'map_style'
+});
+map.setStyle('map_style');
+
+
   if (markers.length === 0) {
     map.setZoom(2);
   } else if (markers.length === 1) {
@@ -142,3 +150,6 @@ if (mapElement) { // don't try to build a map if there's no div#map to inject in
     map.fitLatLngBounds(markers);
   }
 }
+};
+
+export { throwMap } ;
