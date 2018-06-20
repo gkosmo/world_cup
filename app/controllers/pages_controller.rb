@@ -7,8 +7,8 @@ class PagesController < ApplicationController
      matches_with_coord = @matches.where.not(latitude: nil)
      @markers  = matches_with_coord.map do |match|
         {
-          latitude: match.latitude,
-          longitude: match.longitude
+          lng: match.longitude,
+          lat: match.latitude
           }
    end
   end
