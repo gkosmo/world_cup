@@ -1,11 +1,20 @@
 
 function startMe(){
   console.log(Date.now());
-  fetch('//worldcup.sfg.io/matches/current').then(function(response) {
+  fetch('//worldcup.sfg.io/matches/current',  {
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, same-origin, *omit
+    crossDomain:true,
+    headers: {
+         'content-type': 'application/json'
+    },
+    method: 'POST'   }).then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
+     console.log(myJson);
    if(myJson.lenght > 0) {
+
    let doc_c =  document.getElementById('current-match');
    doc_c.innerHTML = '';
    let mainDoc = document.createElement("div");
