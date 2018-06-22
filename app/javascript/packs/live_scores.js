@@ -9,7 +9,7 @@ function startMe(){
   } } ).then(response => response.json())
   .then(function(myJson) {
      console.log(myJson);
-   if(myJson) {
+   if(myJson[0]) {
 
    let doc_c =  document.getElementById('current-match');
    doc_c.innerHTML = '';
