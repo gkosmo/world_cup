@@ -1,0 +1,15 @@
+<h1>CreditPacks#index</h1>
+<p>Find me in app/views/credit_packs/index.html.erb</p>
+
+
+  <% @credit_packs.each do  |c_p| %>
+
+      <%= c_p.name %>
+      <%= c_p.credit %>
+      <%= c_p.price %>
+
+      <%= form_tag orders_path do %>
+        <%= hidden_field_tag 'c_p_id', c_p.id %>
+        <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
+  <% end %>

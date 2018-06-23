@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'credit_packs/index'
+  resources :orders, only: [:show, :create]
   devise_for :users
   root to: 'pages#home'
   get 'vote_match', to: "pages#vote_match"
