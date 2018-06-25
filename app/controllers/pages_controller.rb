@@ -11,6 +11,8 @@ class PagesController < ApplicationController
           lat: match.latitude
           }
    end
+    @credit_packs = CreditPack.all
+
   end
 
   def vote_match

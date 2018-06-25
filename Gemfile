@@ -5,6 +5,8 @@ gem "geocoder"
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
+gem 'money-rails'
+gem 'stripe'
 gem 'puma'
 gem 'rails', '5.1.6'
 gem 'redis'
