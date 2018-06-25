@@ -6,7 +6,7 @@ class Vote < ApplicationRecord
 
   def not_enough_credits
     if user.credit < 1
-      errors.add("not enough credits")
+      errors.add(:user, "not enough credits")
     else
       user.credit - 1
       user.save
