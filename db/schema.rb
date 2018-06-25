@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620072354) do
+ActiveRecord::Schema.define(version: 20180625075541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "credit_packs", force: :cascade do |t|
+    t.string "name"
+    t.string "sku"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.integer "amount_credit"
+  end
 
   create_table "matches", force: :cascade do |t|
     t.datetime "datetime"
@@ -26,6 +35,17 @@ ActiveRecord::Schema.define(version: 20180620072354) do
     t.string "fifa_id"
     t.float "longitude"
     t.float "latitude"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "credit_pack_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180620072354) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "credit"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -55,6 +76,7 @@ ActiveRecord::Schema.define(version: 20180620072354) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "orders", "users"
   add_foreign_key "votes", "matches"
   add_foreign_key "votes", "users"
 end

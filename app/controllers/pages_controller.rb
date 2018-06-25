@@ -11,10 +11,12 @@ class PagesController < ApplicationController
           lat: match.latitude
           }
    end
+    @credit_packs = CreditPack.all
+
   end
 
   def vote_match
-      Vote.create(user: current_user, team: params[:team], match_id: params[:match])
+      Vote.create!(user: current_user, team: params[:team], match_id: params[:match])
       redirect_to root_path
   end
 

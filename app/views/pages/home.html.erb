@@ -28,6 +28,22 @@
  <div id="current-match">
 
  </div>
+
+<% if user_signed_in? %>
+    <p> Wanna Buy Some Credits</p>
+    <% @credit_packs.each do |c_p| %>
+        <%= c_p.name %>
+        <%= humanized_money_with_symbol c_p.price_cents %>
+
+        <%= form_tag orders_path do %>
+        <%= hidden_field_tag 'credit_pack_id', c_p.id %>
+         <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
+    <% end %>
+
+<% end %>
+
+
 <div class="text-center">
 <h1>  Vote for your team </h1>
 </div>
